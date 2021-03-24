@@ -1,0 +1,329 @@
+/* New styles for game window */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: telegrama;
+    src: url(../assets/telegrama_raw.ttf);
+}
+
+@font-face {
+    font-family: jbmb;
+    src: url(../assets/JetBrainsMono-BoldItalic.ttf);
+}
+
+:root {
+    --color-dark-grey: #090909;
+    --color-green: #003900;
+    --color-navy:  #000030;
+    --txt-color: #fafad2;
+    --border-color: #E6DB74;
+
+    --bg-color: #032113;
+    --prm-color: #21f396;
+    --sec-color: #258457;
+    --green-color: #A6E22E;    /* #adff2f; */
+    --cyan-color: #66D9EF;    /* #87ceeb; */
+
+    font-size: 10vmin;
+    font-family: telegrama, monospace, sans-serif;
+}
+
+/*To PREVENT DIV-TEXT SELECTION by Mouse at the Page*/
+div {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body {
+    background: url(../assets/BG.jpg);
+    color: var(--txt-color);
+}
+
+.container {
+    margin: auto;
+    min-width: 100vmin;
+    max-width: 150vmin;
+    min-height: 100vh;
+    font-size: 0.315rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0.05rem;
+    padding: 0 0.02rem;
+    position: relative;  /* For Turn-off animation  */
+}
+.container:after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--txt-color);
+    opacity: 0;
+    left: 0;
+    top: 0;
+}
+.tv._off .container {
+    -webkit-animation: shutdown 500ms linear;
+    animation: shutdown 500ms linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+} 
+.tv._off .container:after {
+    -webkit-animation: shutdown-opa 500ms linear;
+    animation: shutdown-opa 500ms linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes shutdown {  
+    0% { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1);}
+    20% { -webkit-transform: scale3d(1, 1.6, 1); transform: scale3d(1, 1.6, 1);}
+    50% { -webkit-transform: scale3d(1, 0.005, 1); transform: scale3d(1, 0.005, 1);}
+    100% { -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1);}
+}
+@keyframes shutdown-opa {  
+    0% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 1;}
+}
+
+/* ---------------------------- LEFT GRID-container -------------- */
+.left-container {
+    font-size: 3.15vh;
+    grid-row: 1 / 3;
+    border: 1px solid var(--border-color);
+    background-color: var(--color-navy); 
+    display: grid;
+    padding: 0 0.05rem;
+    gap: 0 0.1rem;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+.lgr1 {color: skyblue;}
+.lgr2 {color: greenyellow;}
+.lgr3 {text-align: end;}
+/* --------------------------- MENU GRID-container ---------- */
+.menu-container {
+    border: 1px solid var(--border-color); 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    font-size: min(3.15vh, calc(( 4vw + 4vh + 2vmin ) / 4.25));
+}
+.menu-container > div {
+    background-color: #00390099;
+    text-align: center;
+    padding: 0.05rem;
+}
+#msg, #cw, #timer {font-size: 0.9em;}
+#cw {white-space: nowrap;}
+/* --------------------- MENU -> Flip Box menu icons -------- */
+div.flip-box {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    padding: 0;
+    cursor: pointer;
+}
+.flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.75s;
+    transform-style: preserve-3d;
+}
+.flip-box:hover .flip-box-inner {
+    transform: rotateX(180deg);
+}
+.flip-box-front, .flip-box-back {
+    background-color: #00390099;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-box-back {
+    transform: rotateX(180deg);
+}
+/* - - - END of - - - MENU -> Flip Box - - - */
+.menu-icons {
+    position: relative;
+}
+.menu-icons:hover {
+    color: var(--cyan-color);
+    cursor: pointer;
+}
+    /* Tooltip text */
+.menu-icons .tooltiptext {
+    white-space: nowrap;
+    font-size: 0.65em;
+    font-weight: bolder;
+    font-family: jbmb, monospace;
+    visibility: hidden;
+    width: 1.2rem;
+    background-color: #003900dd;
+    color: var(--cyan-color);
+    border: 0.025rem solid var(--cyan-color);
+    text-align: center;
+    padding: 0.05rem;
+    border-radius: 0.1rem;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -0.6rem;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.75s;
+}
+/* Tooltip arrow */
+.menu-icons .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    margin-left: -0.1rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color:var(--cyan-color) transparent transparent transparent;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.menu-icons:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+#btn-hint {
+    font-size: 0.75em;
+    color: var(--cyan-color);
+    font-family: jbmb, monospace;
+}
+/* Mouse driven Letter Input --------------------------- */
+.letter-input {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown:hover {
+    color: var(--cyan-color);
+    cursor: pointer;
+}
+.dropdown-content {
+    /* display: none; */
+    position: absolute;
+    top: 0.5rem;
+    width: 84vw;
+    max-width: 125vh;
+    transform: translateX(-49%);
+    z-index: 1;
+    border: 1px solid var(--border-color);
+    background-color: #000029;
+    color: var(--txt-color);
+    font-family: jbmb, monospace;
+    font-size: 0.75em;
+    line-height: 1.5;
+    padding: 0.5em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.75s;
+} 
+.dropdown:hover .dropdown-content {
+    /* display: block; */
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --------------------------- CENTRAL FLEX-container */
+.central-container {
+    position: relative;
+    background-color: var(--color-dark-grey);
+    border: 1px solid var(--border-color); 
+    padding: 0.1rem;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-size: min(3.15vh, calc(( 4vw + 4vh + 2vmin ) / 3.9));
+}
+
+.cell {
+    margin: 2px 1px;
+}
+.cell-top {
+    color: greenyellow;
+}
+.cell-bottom {
+    color: var(--cyan-color);
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+.modal-content {
+    position: inherit;
+    background-color: var(--border-color);
+    color: var(--color-dark-grey);
+    font-family: jbmb, monospace;
+    /* font-weight: 900; */
+    line-height: 1.5;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    border: 1px solid var(--color-dark-grey);
+    width: max-content;
+    width: fit-content;
+    max-width: 90%;
+    min-height: 80%;
+}
+
+
+/* For mobile screens */
+
+@media (max-width: 600px) {
+    .left-container {
+        grid-row: 2 / 3;
+        font-size: 2.75vh;
+    }
+    .menu-container {
+        grid-column: 1 / 3;
+    }
+    div.flip-box {
+        font-size: 1.2em;
+    }
+}

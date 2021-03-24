@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYPTO TERMINAL</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="stylesheet" type="text/css" href="style/game-styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+    <div class="tv">
+      <div class="container">
+
+        <div class="left-container" id='left-container'>
+            <!-- LEFT CONTAINER CELL SAMPLE  -->
+            <!-- <div class="lgr1" id="lg-a1">Z</div>
+                 <div class="lgr2" id="lg-a2">A</div>
+                 <div class="lgr3" id="lg-a3">00</div> -->
+        </div>
+        
+        <div class="menu-container">
+            <div id="msg">MSG #X5.555</div>
+            <div id="cw">CRYPTO TERMINAL</div>
+            <div id="timer">0000</div>
+            
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                            <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="flip-box-back">
+                        <div class="menu-icons" id="btn-exit">
+                            <i class="fas fa-power-off"></i>
+                            <span class="tooltiptext">Power OFF</span>
+                        </div>
+                        <div class="menu-icons" id="btn-restart">
+                            <i class="far fa-smile"></i>
+                            <span class="tooltiptext">ReStart</span>
+                        </div>
+                        <div class="menu-icons" id="btn-giveup">
+                            <i class="far fa-flag"></i>
+                            <span class="tooltiptext">Give Up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-input">
+                <!-- <div>A</div> -->
+                <div class="dropdown">
+                    <span class="far fa-question-circle"></span>
+                    <div class="dropdown-content">
+                        To replace a letter press the key for the letter in the code you wish to replace and then press the key for the letter you think it represents.<br>
+                        For example, if you think the “k” in the above message represents the letter “e”, press the K key followed by the E key.<br>
+                        The letter “e” appears below each “k” in the message.<br>
+                        To correct a mistake use the "Space" key.<br>
+                        By this process you eventually build a second readable message.
+                    </div>
+                </div>
+                <!-- <div>Z</div> -->
+            </div>
+
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <i class="far fa-lightbulb"></i>
+                    </div>
+                    <div class="flip-box-back">
+                        <div id="btn-hint">Decode One Letter</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>   <!-- class="menu-container" -->
+        
+        <div class="central-container" id="main-grid">
+            <!-- MAIN GRID CELL SAMPLE  -->
+            <!-- <div class="cell">
+                <div class="cell-top" id="A001">A</div>
+                <div class="cell-bottom"id="B001">Z</div>
+            </div> -->
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <p id="modal-text">...Something went wrong ...</p>
+                </div>
+            </div>
+            <div></div>
+        </div> <!-- class="central-container" -->
+        
+      </div>  <!-- class ="container" -->
+    </div>  <!-- TV Container -->
+
+</body>
+
+<script src="script/gameCW.js"></script>
+
+</html>

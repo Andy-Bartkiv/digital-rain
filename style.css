@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000900;
+    --prm-color: #00ff00;
+    /* --prm-color: #adff2f; */
+    --sec-color: #002000;
+    /* --sec-color: #000f00; */
+    font-size: min(1.5vw, calc((4vw + 4vh + 2vmin ) / 5.1));
+    font-size: 21px;
+}
+
+/*To PREVENT DIV-TEXT SELECTION by Mouse at the Page*/
+div {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--sec-color);
+    font-family: monospace;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(80, auto);  /* - - - should be equal to const COL = 80 in main.js */
+    /* border: 1px solid orangered; */
+    position: absolute;
+    top: 0; left: 0;
+    /* height: 100vh;
+    width: 100vw; */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.75;
+}
+
+.cell {
+    color: var(--sec-color);
+    transition: 1s;
+    height: 1rem;
+}
+
+.cell:hover {
+    color: var(--prm-color);
+    transition: color 0s;
+}
+
+button {
+    z-index: 2;
+}
